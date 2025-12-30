@@ -145,3 +145,24 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+import base64
+import streamlit as st
+
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as img:
+        encoded = base64.b64encode(img.read()).decode()
+
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("https://github.com/21DS-SKYAI/Mumbai-real-estate-price-prediction/blob/main/Mumbai_Skyline_at_Night.jpg;base64,{encoded}");
+            background-size: cover;
+            background-position: center;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
